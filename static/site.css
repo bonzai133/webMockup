@@ -1,0 +1,90 @@
+body {
+    background-color: #1c1c1e;
+    color: #fefefe;
+}
+a {
+    color: #5fa9ee;
+}
+img {
+    filter: grayscale(20%);
+}
+
+.message {
+    font-weight: 600;
+    color: blue;
+}
+
+.navbar {
+    background-color: lightslategray;
+    font-size: 1em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    padding: 8px 5px 8px 5px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar-brand {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.navbar-item {
+    font-variant: small-caps;
+    margin-left: 30px;
+}
+
+.body-content {
+    padding: 5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+.pannel-info { 
+    max-width: 720px;
+    width: 90%;
+    background-color: darkgray;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    box-shadow: 2px 2px 2px gray;
+    padding-top: 1px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: center;
+}
+
+.temperature {
+    font-size: 5em;
+}
+.secondary-info {
+    font-size: 2em;
+}
+
+h3 {
+    margin-left: 10px;
+    font-size: 1.1em;
+}
+
+table.consigne {
+    display: inline-block;
+    border-collapse: collapse;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+table.consigne tbody {
+    display: inherit;
+}
+table.consigne td, th {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+input {
+    text-align: center;
+}
