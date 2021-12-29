@@ -4,9 +4,21 @@ Home
 {% endblock %}
 {% block content %}
 <div class="pannel-info">
+    <h3>Thermostato</h3>
     <p class="temperature">17.85°C</p>
+    <p class="secondary-info">Mode: Normal</p>
+    <label for="mode">Mode:</label>
+
+    <select name="mode" id="mode">
+      <option value="prog">Programmation</option>
+      <option value="normal">Normal</option>
+      <option value="eco">Economique</option>
+      <option value="hg">Hors gel</option>
+    </select> 
+
     <p class="secondary-info">Circulateur: On</p>
 </div>
+
 <form action='/' method='GET' class="pannel-info">
     <h3>Réglages</h3>
     <div>
@@ -25,11 +37,32 @@ Home
             <td class='consigne'> <input type='number' step='0.1' min='5' max='35' id='mode' value='16,0' size='3' name='Eco'>°C</td>
             <td class='consigne'> <input type='number' step='0.1' min='0' max='5' id='mode' value='0,5' size='3' name='Deltae'>°C</td>
         </tr>
+        <tr>
+            <td>Hors gel</td>
+            <td class='consigne'> <input type='number' step='0.1' min='0' max='35' id='mode' value='6,0' size='3' name='Hors gel'>°C</td>
+            <td class='consigne'> <input type='number' step='0.1' min='0' max='5' id='mode' value='0,5' size='3' name='Deltah'>°C</td>
+        </tr>
     </table>
     </div>            
     <input type='submit' Value='Valider'>
 </form>
 
+<form action='/' method='GET' class="pannel-info">
+    <h3>Réglages avancés</h3>
+    <div>
+    <table class='consigne' width='80%'>
+        <tr>
+            <td>Adresse IP</td>
+            <td class='consigne'> <input type='text' disabled='disabled' value='192.168.0.12'></td>
+        </tr>
+        <tr>
+            <td>Contraste LCD</td>
+            <td class='consigne'> <input type='range' step='1' min='0' max='255' id='lcdContrast' value='128' name='Lcd Contrast'></td>
+        </tr>
+    </table>
+    </div>            
+    <input type='submit' Value='Valider'>
+</form>
 {% endblock %}
 
 
