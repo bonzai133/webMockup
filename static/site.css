@@ -42,8 +42,6 @@ img {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
-
 .pannel-info { 
     max-width: 720px;
     width: 90%;
@@ -60,9 +58,12 @@ img {
 
 .temperature {
     font-size: 5em;
+    margin:2%;
 }
+
 .secondary-info {
     font-size: 2em;
+    margin:1%;
 }
 
 h3 {
@@ -85,6 +86,11 @@ table.consigne td, th {
     padding-left: 1em;
     padding-right: 1em;
 }
+
 input {
     text-align: center;
+}
+
+select {
+    font-size: inherit;
 }

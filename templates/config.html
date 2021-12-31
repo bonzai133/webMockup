@@ -3,5 +3,40 @@
 Configuration
 {% endblock %}
 {% block content %}
-<p>Contact page for the Visual Studio Code Flask tutorial.</p>
+<form action='/' method='GET' class="pannel-info">
+    <h3>Réglages</h3>
+    <p class="consigne">
+        <label for="mode">Mode:</label>
+        <select name="mode" id="mode">
+            <option value="prog" selected>Planifié</option>
+            <option value="normal">Normal</option>
+            <option value="eco">Economique</option>
+            <option value="hg">Hors gel</option>
+        </select> 
+    </p>
+    <div>
+    <table class='consigne' width='80%'>
+        <th>
+            <td>Consigne</td>
+            <td>Delta</td>
+        </th>
+        <tr>
+            <td>Normal</td>
+            <td class='consigne'> <input type='number' step='0.1' min='5' max='35' size='3' id='mode' value='19,0' name='Normal'>°C</td>
+            <td class='consigne'> <input type='number' step='0.1' min='0' max='5' id='mode' value='0,5' size='3' name='Deltan'>°C</td>
+        </tr>
+        <tr>
+            <td>Eco</td>
+            <td class='consigne'> <input type='number' step='0.1' min='5' max='35' id='mode' value='16,0' size='3' name='Eco'>°C</td>
+            <td class='consigne'> <input type='number' step='0.1' min='0' max='5' id='mode' value='0,5' size='3' name='Deltae'>°C</td>
+        </tr>
+        <tr>
+            <td>Hors gel</td>
+            <td class='consigne'> <input type='number' step='0.1' min='0' max='35' id='mode' value='6,0' size='3' name='Hors gel'>°C</td>
+            <td class='consigne'> <input type='number' step='0.1' min='0' max='5' id='mode' value='0,5' size='3' name='Deltah'>°C</td>
+        </tr>
+    </table>
+    </div>            
+    <input type='submit' Value='Valider'>
+</form>
 {% endblock %}

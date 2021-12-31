@@ -21,3 +21,7 @@ def about():
 @app.route("/config/")
 def config():
     return render_template("config.html")
+
+@app.route("/configAdvanced/")
+def configAdvanced():
+    return render_template("configAdvanced.html")

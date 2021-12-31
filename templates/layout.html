@@ -11,7 +11,8 @@
     <body>
         <div class="navbar">
             <a href="{{ url_for('home') }}" class="navbar-brand">Home</a>
-            <a href="{{ url_for('config') }}" class="navbar-item">Config</a>
+            <a href="{{ url_for('config') }}" class="navbar-item">Réglages</a>
+            <a href="{{ url_for('configAdvanced') }}" class="navbar-item">Réglages avancés</a>
             <a href="{{ url_for('about') }}" class="navbar-item">About</a>
         </div>
 
@@ -23,5 +24,6 @@
                 <p>Thermostato - 2021</p>
             </footer>
         </div>
+        <script src="{{ url_for('static', filename='index.js')}}"></script>
     </body>
 </html>
