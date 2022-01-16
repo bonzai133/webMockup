@@ -57,8 +57,13 @@ img {
 }
 
 .temperature {
+    display: inline-flex;
     font-size: 5em;
     margin:2%;
+}
+
+.error {
+    color: lightcoral;
 }
 
 .secondary-info {

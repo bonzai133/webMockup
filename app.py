@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from datetime import datetime
 import re
 
@@ -25,3 +25,13 @@ def config():
 @app.route("/configAdvanced/")
 def configAdvanced():
     return render_template("configAdvanced.html")
+
+
+@app.route("/temperature/")
+def temperature():
+    tempDoc = {'temperature': 21.15}
+
+    return jsonify(tempDoc)
+
+if __name__ == "__main__":
+    app.run()
