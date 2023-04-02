@@ -10,10 +10,10 @@
 
     <body>
         <div class="navbar">
-            <a href="{{ url_for('home') }}" class="navbar-brand">Home</a>
-            <a href="{{ url_for('config') }}" class="navbar-item">Réglages</a>
-            <a href="{{ url_for('configAdvanced') }}" class="navbar-item">Réglages avancés</a>
-            <a href="{{ url_for('about') }}" class="navbar-item">About</a>
+            <a href="{{ url_for('home') }}" class="navbar-item {% if request.path == url_for('home') %}active{% endif %}">Home</a></li>
+            <a href="{{ url_for('config') }}" class="navbar-item {% if request.path == url_for('config') %}active{% endif %}">Réglages</a></li>
+            <a href="{{ url_for('configAdvanced') }}" class="navbar-item {% if request.path == url_for('configAdvanced') %}active{% endif %}">Réglages avancés</a></li>
+            <a href="{{ url_for('about') }}" class="navbar-item {% if request.path == url_for('about') %}active{% endif %}">About</a></li>
         </div>
 
         <div class="body-content">
