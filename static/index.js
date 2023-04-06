@@ -14,12 +14,15 @@ function onLoad(event) {
 }
 
 function initTime() {
+    // Time is not available on all pages
     time = document.getElementById('time');
-    updateTime();
-    // a timing event manager is initialized
-    // which must be triggered every second to refresh
-    // the display of the current time
-    setInterval(updateTime, 1000);
+    if(time !== null) {
+        updateTime();
+        // a timing event manager is initialized
+        // which must be triggered every second to refresh
+        // the display of the current time
+        setInterval(updateTime, 1000);
+    }
 }
 
 function updateTime() {
@@ -35,12 +38,16 @@ function normalize(digit) {
 }
 
 function initTemperature() {
+    // temperature is not available on all pages
     temperature = document.getElementById('temperature');
-    unit = document.getElementById('unit');
-    tempContainer = document.getElementById('tempContainer');
+    if (temperature !== null) {
+        unit = document.getElementById('unit');
+        tempContainer = document.getElementById('tempContainer');
 
-    setTemperature("-");
-    setInterval(getTemperature, temperatureRefreshTime);
+        setTemperature("-");
+        getTemperature();
+        setInterval(getTemperature, temperatureRefreshTime);
+    }
 }
 
 function getTemperature() {

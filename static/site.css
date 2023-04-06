@@ -18,27 +18,31 @@ img {
 .navbar {
     background-color: lightslategray;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    padding: 8px;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: inherit;
-    padding: 8px;
-}
-
-
-.navbar-item {
     font-variant: small-caps;
-
 }
 
-a:hover {
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    margin:0;
+    padding:0;
+}
+
+.navbar li {
+    margin:0;
+    padding: 8px;
+}
+
+.navbar li:hover {
     background-color: #111;
  }
   
-a.active {
+.navbar li.active {
     background-color: #777;
+}
+.navbar a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .body-content {
