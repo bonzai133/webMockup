@@ -1,8 +1,10 @@
 from flask import Flask, render_template, jsonify
+from flask_minify import Minify
 from datetime import datetime
 import re
 
 app = Flask(__name__)
+Minify(app=app, html=True, js=True, cssless=True)
 
 @app.route("/api/data")
 def get_data():
