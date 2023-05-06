@@ -3,15 +3,15 @@
 Home
 {% endblock %}
 {% block content %}
-<div class="pannel-info">
-    <p class="secondary-info" id="time"></p>
+<div class="pannel-info" id="home-status">
+    <div class="secondary-info" id="time"></div>
     <div class="temperature" id="tempContainer">
         <div id="temperature"></div>
         <div id="unit">°C</div>
     </div>
 
-    <p class="secondary-info">Mode: Planifié (Confort)</p>
-    <p class="secondary-info">Circulateur: On</p>
+    <div class="secondary-info">Mode: <div class="value-info" id="mode"></div></div>
+    <div class="secondary-info">Circulateur: <div class="value-info" id="pump"></div></div>
 </div>
 
 {% endblock %}

@@ -4,13 +4,17 @@ const temperatureRefreshTime = 10000; // Refresh temperture every 10 seconds
 var temperature; // HTML element that incorporates the current temperature value
 var unit; // HTML element for temperature unit
 var tempContainer; // HTML element for temperature container
+var mode; // HTML element for mode
+var pump; // HTML element for pump
+var formConfig; // HTML element for config form
 
 window.addEventListener('load', onLoad);
 
 
 function onLoad(event) {
     initTime();
-    initTemperature();
+    initHomeStatus();
+    initForm();
 }
 
 function initTime() {
@@ -25,6 +29,71 @@ function initTime() {
     }
 }
 
+async function initForm() {
+    // Get the form element from the DOM
+    formConfig = document.getElementById('config-form');
+    if (formConfig) {
+        // Load values
+        const response = await fetch('/api/config');
+        const data = await response.json();
+      
+        formConfig.elements['mode-select'].value = data.mode;
+        formConfig.elements.Normal.value = data.normal;
+        formConfig.elements.Deltan.value = data.deltaNormal;
+        formConfig.elements.Eco.value = data.eco;
+        formConfig.elements.Deltae.value = data.deltaEco;
+        formConfig.elements.HorsGel.value = data.horsGel;
+        formConfig.elements.Deltah.value = data.deltaHorsGel;
+
+        // Add an event listener for the form submission
+        formConfig.addEventListener('submit', async (event) => {
+            event.preventDefault(); // prevent the form from being submitted normally
+
+            // Get the form values and store them in an object
+            const mode = formConfig.elements['mode-select'].value;
+            const normal = Number(formConfig.elements.Normal.value);
+            const deltaNormal = Number(formConfig.elements.Deltan.value);
+            const eco = Number(formConfig.elements.Eco.value);
+            const deltaEco = Number(formConfig.elements.Deltae.value);
+            const horsGel = Number(formConfig.elements.HorsGel.value);
+            const deltaHorsGel = Number(formConfig.elements.Deltah.value);
+            
+            const data = {
+                mode: mode,
+                normal: normal,
+                deltaNormal: deltaNormal,
+                eco: eco,
+                deltaEco: deltaEco,
+                horsGel: horsGel,
+                deltaHorsGel: deltaHorsGel
+            };
+
+            try {
+                // Send a POST request to the "/config" endpoint with the form data as a JSON payload
+                const response = await fetch('/api/config', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+        
+                // If the response is not ok, throw an error
+                if (!response.ok) {
+                    throw new Error('Failed to save form data');
+                }
+        
+                // Display a success message to the user
+                alert('Form data saved successfully!');
+            } catch (error) {
+                console.error(error);
+                alert('An error occurred while saving the form data');
+            }
+        });
+    }
+
+}
+
 function updateTime() {
     let now    = new Date();
     let h      = now.getHours();
@@ -37,23 +106,29 @@ function normalize(digit) {
     return (digit < 10 ? '0' : '') + digit;
 }
 
-function initTemperature() {
-    // temperature is not available on all pages
-    temperature = document.getElementById('temperature');
-    if (temperature !== null) {
+function initHomeStatus() {
+    // Only in homepage
+    if (document.getElementById('home-status')) {
+        temperature = document.getElementById('temperature');
         unit = document.getElementById('unit');
         tempContainer = document.getElementById('tempContainer');
+        mode = document.getElementById('mode');
+        pump = document.getElementById('pump');
 
         setTemperature("-");
-        getTemperature();
-        setInterval(getTemperature, temperatureRefreshTime);
+        getHomeStatus();
+        setInterval(getHomeStatus, temperatureRefreshTime);
     }
+
 }
 
-function getTemperature() {
-    asyncAwaitRequest('/temperature/', (tempDoc) => {
-        temp = tempDoc.temperature;
-        setTemperature(temp); });
+function getHomeStatus() {
+    asyncAwaitRequest('/api/homeStatus/', (rspDoc) => {
+        setTemperature(rspDoc.temperature);
+
+        mode.innerText = rspDoc.mode;
+        pump.innerText = rspDoc.pump;
+    });
 }
 
 function setTemperature(temp) {

@@ -77,6 +77,13 @@ img {
 .secondary-info {
     font-size: 2em;
     margin:1%;
+    color: lightgray;
+}
+
+.value-info {
+    
+    color: #fefefe;
+    display: contents;
 }
 
 h3 {
