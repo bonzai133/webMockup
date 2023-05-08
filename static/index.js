@@ -14,7 +14,8 @@ window.addEventListener('load', onLoad);
 function onLoad(event) {
     initTime();
     initHomeStatus();
-    initForm();
+    initConfigForm();
+    initAdvancedConfigForm();
 }
 
 function initTime() {
@@ -29,7 +30,7 @@ function initTime() {
     }
 }
 
-async function initForm() {
+async function initConfigForm() {
     // Get the form element from the DOM
     formConfig = document.getElementById('config-form');
     if (formConfig) {
@@ -71,6 +72,61 @@ async function initForm() {
             try {
                 // Send a POST request to the "/config" endpoint with the form data as a JSON payload
                 const response = await fetch('/api/config', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+        
+                // If the response is not ok, throw an error
+                if (!response.ok) {
+                    throw new Error('Failed to save form data');
+                }
+        
+                // Display a success message to the user
+                alert('Form data saved successfully!');
+            } catch (error) {
+                console.error(error);
+                alert('An error occurred while saving the form data');
+            }
+        });
+    }
+
+}
+
+async function initAdvancedConfigForm() {
+    // Get the form element from the DOM
+    formAdvancedConfig = document.getElementById('advanced-form');
+    if (formAdvancedConfig) {
+        // Load values
+        const response = await fetch('/api/advancedConfig');
+        const data = await response.json();
+      
+        for (let key in data) {
+            if (data.hasOwnProperty(key)) {
+              const input = formAdvancedConfig.elements[key];
+              if (input) {
+                input.value = data[key];
+              }
+            }
+        }
+          
+        // Add an event listener for the form submission
+        formAdvancedConfig.addEventListener('submit', async (event) => {
+            event.preventDefault(); // prevent the form from being submitted normally
+
+            // Get the form values and store them in an object
+            const formData = new FormData(formAdvancedConfig);
+
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+              data[key] = value;
+            }
+
+            try {
+                // Send a POST request to the "/advancedConfig" endpoint with the form data as a JSON payload
+                const response = await fetch('/api/advancedConfig', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

@@ -2,18 +2,14 @@ body {
     background-color: #1c1c1e;
     color: #fefefe;
 }
+
 a {
     color: #5fa9ee;
 }
+
 img {
     filter: grayscale(20%);
 }
-
-.message {
-    font-weight: 600;
-    color: blue;
-}
-
 
 .navbar {
     background-color: lightslategray;
@@ -107,8 +103,31 @@ table.consigne td, th {
     padding-right: 1em;
 }
 
-input {
+table.consigne input {
     text-align: center;
+}
+
+
+table.config {
+    display: inline-block;
+    border-collapse: collapse;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+table.config tbody {
+    display: inherit;
+}
+table.config td, th {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+table.config input {
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 select {

@@ -48,6 +48,15 @@ def api_config():
     else:
         return jsonify({'mode': 'eco', 'normal': 19.2, 'deltaNormal': 0.5, 'eco': 16, 'deltaEco': 0.5, 'horsGel': 6, 'deltaHorsGel': 0.5})
 
+@app.route("/api/advancedConfig", methods=['GET', 'POST'])
+def api_advancedConfig():
+    if request.method == 'POST':
+        data = request.get_json()
+        print(data)  # you can remove this line, it's just for debugging
+        return jsonify({'message': 'Advanced Config received'})
+    else:
+        return jsonify({'date': '2023-05-08', 'time': '17:17', 'ipAddress': '192.168.0.69', 'ntpServer': 'fr.poopool.org', 'lcdContrast': '128'})
+
 
 if __name__ == "__main__":
     app.run(debug=True)
