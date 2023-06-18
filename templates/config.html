@@ -3,7 +3,7 @@
 Configuration
 {% endblock %}
 {% block content %}
-<form action='' method='GET' class="pannel-info" id="config-form">
+<form action='bla' method='GET' class="pannel-info" id="config-form">
     <h3>Réglages</h3>
     <p class="consigne">
         <label for="mode">Mode:</label>
@@ -11,7 +11,7 @@ Configuration
             <option value="prog" selected>Planifié</option>
             <option value="confort">Confort</option>
             <option value="eco">Economique</option>
-            <option value="hg">Hors gel</option>
+            <option value="horsgel">Hors gel</option>
         </select> 
     </p>
     <div>
@@ -22,8 +22,8 @@ Configuration
         </th>
         <tr>
             <td>Confort</td>
-            <td class='consigne'> <input type='number' step='0.1' min='5' max='35' size='3' id='mode' value='19.2' name='Normal'>°C</td>
-            <td class='consigne'> <input type='number' step='0.1' min='0' max='5' id='mode' value='0.5' size='3' name='Deltan'>°C</td>
+            <td class='consigne'> <input type='number' step='0.1' min='5' max='35' size='3' id='mode' value='19.2' name='Confort'>°C</td>
+            <td class='consigne'> <input type='number' step='0.1' min='0' max='5' id='mode' value='0.5' size='3' name='Deltac'>°C</td>
         </tr>
         <tr>
             <td>Eco</td>

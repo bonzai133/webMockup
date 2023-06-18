@@ -39,8 +39,8 @@ async function initConfigForm() {
         const data = await response.json();
       
         formConfig.elements['mode-select'].value = data.mode;
-        formConfig.elements.Normal.value = data.normal;
-        formConfig.elements.Deltan.value = data.deltaNormal;
+        formConfig.elements.Confort.value = data.confort;
+        formConfig.elements.Deltac.value = data.deltaConfort;
         formConfig.elements.Eco.value = data.eco;
         formConfig.elements.Deltae.value = data.deltaEco;
         formConfig.elements.HorsGel.value = data.horsGel;
@@ -52,8 +52,8 @@ async function initConfigForm() {
 
             // Get the form values and store them in an object
             const mode = formConfig.elements['mode-select'].value;
-            const normal = Number(formConfig.elements.Normal.value);
-            const deltaNormal = Number(formConfig.elements.Deltan.value);
+            const confort = Number(formConfig.elements.Confort.value);
+            const deltaConfort = Number(formConfig.elements.Deltac.value);
             const eco = Number(formConfig.elements.Eco.value);
             const deltaEco = Number(formConfig.elements.Deltae.value);
             const horsGel = Number(formConfig.elements.HorsGel.value);
@@ -61,8 +61,8 @@ async function initConfigForm() {
             
             const data = {
                 mode: mode,
-                normal: normal,
-                deltaNormal: deltaNormal,
+                confort: confort,
+                deltaConfort: deltaConfort,
                 eco: eco,
                 deltaEco: deltaEco,
                 horsGel: horsGel,

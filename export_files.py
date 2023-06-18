@@ -6,12 +6,12 @@ import requests
 
 def main(hostname, output):
     files = [
-        ("", "home.html"),
-        ("config", "config.html"),
-        ("configAdvanced", "configAdvanced.html"),
-        ("about", "about.html"),
-        ("static/index.js", "index.js"),
-        ("static/site.css", "site.css"),
+        ("home.html", "home.html"),
+        ("config.html", "config.html"),
+        ("configAdvanced.html", "configAdvanced.html"),
+        ("about.html", "about.html"),
+        ("static/index.js", "static/index.js"),
+        ("static/site.css", "static/site.css"),
     ]
 
     for (url, file_path) in files:

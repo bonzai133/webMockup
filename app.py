@@ -12,19 +12,23 @@ def get_data():
 
 # Replace the existing home function with the one below
 @app.route("/")
+def index():
+    return render_template("home.html")
+
+@app.route("/home.html")
 def home():
     return render_template("home.html")
 
 # New functions
-@app.route("/about/")
+@app.route("/about.html")
 def about():
     return render_template("about.html")
 
-@app.route("/config/")
+@app.route("/config.html")
 def config():
     return render_template("config.html")
 
-@app.route("/configAdvanced/")
+@app.route("/configAdvanced.html")
 def configAdvanced():
     return render_template("configAdvanced.html")
 
@@ -33,7 +37,7 @@ def configAdvanced():
 def homeStatus():
     tempDoc = {
         'temperature': 21.15,
-        'mode': "Planifié (Confort)",
+        'mode': "confort",
         'pump': "On"
     }
 
@@ -46,7 +50,7 @@ def api_config():
         print(data)  # you can remove this line, it's just for debugging
         return jsonify({'message': 'Config received'})
     else:
-        return jsonify({'mode': 'eco', 'normal': 19.2, 'deltaNormal': 0.5, 'eco': 16, 'deltaEco': 0.5, 'horsGel': 6, 'deltaHorsGel': 0.5})
+        return jsonify({'mode': 'eco', 'confort': 19.2, 'deltaConfort': 0.5, 'eco': 16, 'deltaEco': 0.5, 'horsGel': 6, 'deltaHorsGel': 0.5})
 
 @app.route("/api/advancedConfig", methods=['GET', 'POST'])
 def api_advancedConfig():
