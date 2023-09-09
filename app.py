@@ -32,6 +32,11 @@ def config():
 def configAdvanced():
     return render_template("configAdvanced.html")
 
+@app.route("/schedule.html")
+def schedule():
+    return render_template("schedule.html")
+
+# API
 
 @app.route("/api/homeStatus/")
 def homeStatus():
@@ -60,6 +65,16 @@ def api_advancedConfig():
         return jsonify({'message': 'Advanced Config received'})
     else:
         return jsonify({'date': '2023-05-08', 'time': '17:17', 'ipAddress': '192.168.0.69', 'ntpServer': 'fr.poopool.org', 'lcdContrast': '128'})
+
+
+@app.route("/api/timeSlots", methods=['GET', 'POST'])
+def api_timeSlots():
+    if request.method == 'POST':
+        data = request.get_json()
+        print(data)  # you can remove this line, it's just for debugging
+        return jsonify({'message': 'Timeslots received'})
+    else:
+        return jsonify({})
 
 
 if __name__ == "__main__":
