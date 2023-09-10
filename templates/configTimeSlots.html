@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block title %}
+Configuration des périodes de chauffe
+{% endblock %}
+{% block content %}
+<form action='' class="pannel-info" id="timeSlotForm">
+    <table class="timeSlot" >
+        <tr>
+            <th></th>
+            <th>Lundi</th>
+            <th>Mardi</th>
+            <th>Mercredi</th>
+            <th>Jeudi</th>
+            <th>Vendredi</th>
+            <th>Samedi</th>
+            <th>Dimanche</th>
+        </tr>
+        <tr>
+            <td>Périodes de chauffe</td>
+            <td>
+                <button type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+            </td>
+            <td>
+                <button type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+            </td>
+            <td>
+                <button type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+            </td>
+            <td>
+                <button type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+            </td>
+            <td>
+                <button type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+            </td>
+            <td>
+                <button type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+            </td>
+            <td>
+                <button type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+            </td>
+        </tr>
+    </table>
+    <button type="button" onclick="submitTimeSlots()">Valider</button>
+</form>
+
+{% endblock %}

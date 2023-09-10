@@ -32,9 +32,9 @@ def config():
 def configAdvanced():
     return render_template("configAdvanced.html")
 
-@app.route("/schedule.html")
-def schedule():
-    return render_template("schedule.html")
+@app.route("/configTimeSlots.html")
+def configTimeSlots():
+    return render_template("configTimeSlots.html")
 
 # API
 

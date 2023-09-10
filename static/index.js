@@ -216,6 +216,68 @@ function setTemperature(temp) {
     }
 }
 
+function deleteTimeSlot(button) {
+    button.parentNode.remove();
+}
+
+function addTimeSlot(button) {
+    const div = document.createElement('div');
+    div.className = 'time-slot';
+    div.innerHTML = '<input type="time" name="timeStart" class="edit-input" value="00:00"> <input type="time" name="timeEnd" class="edit-input" value="00:00"> <button type="button" class="delete-button" onclick="deleteTimeSlot(this)">Supprimer</button>';
+    // Insert Before
+    button.parentNode.insertBefore(div, button);
+    // Insert After
+    //button.parentNode.insertBefore(div, button.nextSibling);
+}
+
+function submitTimeSlots() {
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    const form = document.getElementById('timeSlotForm');
+    const timeSlots = [];
+
+    const rows = form.getElementsByTagName('tr');
+    for (let i = 1; i < days.length + 1; i++) {
+        const day = days[i - 1]
+        const times = [];
+
+        for (let j = 1; j < rows.length; j++) {
+            const cells = rows[j].getElementsByTagName('td');
+
+            cells[i].querySelectorAll('input[name="timeStart"]').forEach((timeStartInput, index) => {
+                const timeEndInput = cells[i].querySelectorAll('input[name="timeEnd"]')[index];
+
+                if (timeStartInput && timeEndInput) {
+                    const timeStart = timeStartInput.value;
+                    const timeEnd = timeEndInput.value;
+                    times.push({ start: timeStart, end: timeEnd });
+                }
+            });
+        }
+
+        timeSlots.push({ day: day, times: JSON.stringify(times)} );
+    }
+    
+     // Send timeSlots to API
+    fetch('/api/timeSlots', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ timeSlots })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Plages horaires envoyées avec succès à l\'API.');
+        } else {
+            alert('Échec de l\'envoi des plages horaires à l\'API.');
+        }
+    })
+    .catch(error => {
+        console.error('Erreur lors de l\'envoi des données à l\'API:', error);
+    });
+}
+
+
 // Using Async/Await Promises
 // @see: https://medium.com/@mattburgess/how-to-get-data-with-javascript-in-2018-f30ba04ad0da
 

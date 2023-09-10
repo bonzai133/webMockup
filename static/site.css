@@ -133,3 +133,41 @@ table.config input {
 select {
     font-size: inherit;
 }
+
+/* Config timeSlots */
+#timeSlotForm {
+    width: 100%;
+    max-width: revert;
+}
+
+table.timeSlot {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px auto;
+    background-color: darkcyan;
+}
+
+table.timeSlot th, table.timeSlot td {
+    text-align: center;
+    padding: 10px;
+}
+
+.time-slot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.delete-button {
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.add-button {
+    background-color: #006400;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
