@@ -16,6 +16,7 @@ function onLoad(event) {
     initHomeStatus();
     initConfigForm();
     initAdvancedConfigForm();
+    initConfigTimeSlots();
 }
 
 function initTime() {
@@ -220,18 +221,20 @@ function deleteTimeSlot(button) {
     button.parentNode.remove();
 }
 
-function addTimeSlot(button) {
+function addTimeSlot(button, start="00:00", end="00:00") {
     const div = document.createElement('div');
     div.className = 'time-slot';
-    div.innerHTML = '<input type="time" name="timeStart" class="edit-input" value="00:00"> <input type="time" name="timeEnd" class="edit-input" value="00:00"> <button type="button" class="delete-button" onclick="deleteTimeSlot(this)">Supprimer</button>';
+    div.innerHTML = `<input type="time" name="timeStart" class="edit-input" value="${start}"> <input type="time" name="timeEnd" class="edit-input" value="${end}"> <button type="button" class="delete-button" onclick="deleteTimeSlot(this)">Supprimer</button>`;
     // Insert Before
     button.parentNode.insertBefore(div, button);
     // Insert After
     //button.parentNode.insertBefore(div, button.nextSibling);
+
+    return div;
 }
 
 function submitTimeSlots() {
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     const form = document.getElementById('timeSlotForm');
     const timeSlots = [];
 
@@ -254,7 +257,7 @@ function submitTimeSlots() {
             });
         }
 
-        timeSlots.push({ day: day, times: JSON.stringify(times)} );
+        timeSlots.push({ day: day, times: times} );
     }
     
      // Send timeSlots to API
@@ -277,6 +280,28 @@ function submitTimeSlots() {
     });
 }
 
+
+async function initConfigTimeSlots() {
+    const timeSlotForm = document.getElementById('timeSlotForm');
+    if (timeSlotForm) {
+        // Load values
+        const response = await fetch('/api/timeSlots');
+        const data = await response.json();
+      
+        data.timeSlots.forEach(
+            ts => {
+                const button = document.getElementById('button_' + ts.day);
+
+                // Get times start, end
+                ts.times.forEach(
+                    period => {
+                        div = addTimeSlot(button, period.start, period.end);
+                    }
+                );
+            }
+        );
+    }
+}
 
 // Using Async/Await Promises
 // @see: https://medium.com/@mattburgess/how-to-get-data-with-javascript-in-2018-f30ba04ad0da
