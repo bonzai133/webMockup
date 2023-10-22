@@ -4,6 +4,7 @@ import requests
 # 1. Run Flask app on http://localhost:5000
 # 2. Execute this script
 
+
 def main(hostname, output):
     files = [
         ("home.html", "home.html"),
@@ -20,6 +21,7 @@ def main(hostname, output):
         f2 = open(f"{output}/{file_path}", "w")
         f2.write(my_page)
         f2.close()
+
 
 if __name__ == "__main__":
     hostname = "http://localhost:5000"
