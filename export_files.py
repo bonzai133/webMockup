@@ -10,6 +10,7 @@ def main(hostname, output):
         ("home.html", "home.html"),
         ("config.html", "config.html"),
         ("configAdvanced.html", "configAdvanced.html"),
+        ("configTimeSlots.html", "configTimeSlots.html"),
         ("about.html", "about.html"),
         ("static/index.js", "static/index.js"),
         ("static/site.css", "static/site.css"),

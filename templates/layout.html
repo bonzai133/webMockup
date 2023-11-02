@@ -14,7 +14,7 @@
                 <li {% if request.path == url_for('home') %}class="active"{% endif %}><a href="{{ url_for('home') }}">Home</a></li>
                 <li {% if request.path == url_for('config') %}class="active"{% endif %}><a href="{{ url_for('config') }}">Réglages</a></li>
                 <li {% if request.path == url_for('configAdvanced') %}class="active"{% endif %}><a href="{{ url_for('configAdvanced') }}">Réglages avancés</a></li>
-                <li {% if request.path == url_for('configTimeSlots') %}class="active"{% endif %}><a href="{{ url_for('configTimeSlots') }}">Période de chauffe</a></li>
+                <li {% if request.path == url_for('configTimeSlots') %}class="active"{% endif %}><a href="{{ url_for('configTimeSlots') }}">Périodes de chauffe</a></li>
                 <li {% if request.path == url_for('about') %}class="active"{% endif %}><a href="{{ url_for('about') }}">About</a></li>
             </ul>
         </nav>

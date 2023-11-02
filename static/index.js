@@ -82,14 +82,14 @@ async function initConfigForm() {
         
                 // If the response is not ok, throw an error
                 if (!response.ok) {
-                    throw new Error('Failed to save form data');
+                    throw new Error('Configuration non appliquée !');
                 }
         
                 // Display a success message to the user
-                alert('Form data saved successfully!');
+                alert('Configuration appliquée avec succès !');
             } catch (error) {
                 console.error(error);
-                alert('An error occurred while saving the form data');
+                alert('Erreur indéterminée lors de la sauvegarde de la configuration !');
             }
         });
     }
@@ -137,14 +137,14 @@ async function initAdvancedConfigForm() {
         
                 // If the response is not ok, throw an error
                 if (!response.ok) {
-                    throw new Error('Failed to save form data');
+                    throw new Error('Configuration non appliquée !');
                 }
         
                 // Display a success message to the user
-                alert('Form data saved successfully!');
+                alert('Configuration appliquée avec succès !');
             } catch (error) {
                 console.error(error);
-                alert('An error occurred while saving the form data');
+                alert('Erreur indéterminé lors de la sauvegarde de la configuration !');
             }
         });
     }
@@ -183,7 +183,14 @@ function getHomeStatus() {
     asyncAwaitRequest('/api/homeStatus/', (rspDoc) => {
         setTemperature(rspDoc.temperature);
 
-        mode.innerText = rspDoc.mode;
+        switch(rspDoc.mode) {
+            case 'prog': mode.innerText = "Planifié"; break;
+            case 'confort': mode.innerText = "Confort"; break;
+            case 'eco': mode.innerText = "Economique"; break;
+            case 'horsgel': mode.innerText = "Hors gel"; break;
+            default: mode.innerText = ""; break;
+        }
+
         pump.innerText = rspDoc.pump;
     });
 }
