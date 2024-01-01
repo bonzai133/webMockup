@@ -5,40 +5,51 @@ Configuration des périodes de chauffe
 {% block content %}
 <form action='' class="pannel-info" id="timeSlotForm">
     <table class="timeSlot" >
-        <tr>
-            <th></th>
-            <th>Lundi</th>
-            <th>Mardi</th>
-            <th>Mercredi</th>
-            <th>Jeudi</th>
-            <th>Vendredi</th>
-            <th>Samedi</th>
-            <th>Dimanche</th>
-        </tr>
-        <tr>
-            <td>Périodes de chauffe</td>
-            <td>
-                <button id="button_Mon" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
-            </td>
-            <td>
-                <button id="button_Tue" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
-            </td>
-            <td>
-                <button id="button_Wed" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
-            </td>
-            <td>
-                <button id="button_Thu" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
-            </td>
-            <td>
-                <button id="button_Fri" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
-            </td>
-            <td>
-                <button id="button_Sat" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
-            </td>
-            <td>
-                <button id="button_Sun" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
-            </td>
-        </tr>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Lundi</th>
+                <th>Mardi</th>
+                <th>Mercredi</th>
+                <th>Jeudi</th>
+                <th>Vendredi</th>
+                <th>Samedi</th>
+                <th>Dimanche</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Périodes de chauffe</th>
+                <td>
+                    <div class="sc-day">Lundi</div>
+                    <button id="button_Mon" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+                </td>
+                <td>
+                    <div class="sc-day">Mardi</div>
+                    <button id="button_Tue" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+                </td>
+                <td>
+                    <div class="sc-day">Mercredi</div>
+                    <button id="button_Wed" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+                </td>
+                <td>
+                    <div class="sc-day">Jeudi</div>
+                    <button id="button_Thu" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+                </td>
+                <td>
+                    <div class="sc-day">Vendredi</div>
+                    <button id="button_Fri" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+                </td>
+                <td>
+                    <div class="sc-day">Samedi</div>
+                    <button id="button_Sat" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+                </td>
+                <td>
+                    <div class="sc-day">Dimanche</div>
+                    <button id="button_Sun" type="button" class="add-button" onclick="addTimeSlot(this)">Ajouter une période</button>
+                </td>
+            </tr>
+        </tbody>
     </table>
     <button type="button" onclick="submitTimeSlots()">Valider</button>
 </form>

@@ -1,3 +1,29 @@
+.sc-day {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    table.timeSlot thead {
+        display: none;
+    }
+    .sc-day {
+        text-align: center;
+        padding: 10px;
+        display: inherit;
+        font-weight: bold;
+    }
+
+    .timeSlot th,
+    .timeSlot td {
+        display: block;
+    }
+
+    .timeSlot tr  {
+        display: block;
+        float: left;
+    }
+}
+
 body {
     background-color: #1c1c1e;
     color: #fefefe;
@@ -146,7 +172,6 @@ select {
 
 table.timeSlot {
     border-collapse: collapse;
-    width: 100%;
     margin: 20px auto;
     background-color: darkcyan;
 }
