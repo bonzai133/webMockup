@@ -242,28 +242,23 @@ function addTimeSlot(button, start="00:00", end="00:00") {
 
 function submitTimeSlots() {
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    const form = document.getElementById('timeSlotForm');
+    const tbody_tr = document.getElementById('timeSlotForm_tbody_tr');
     const timeSlots = [];
 
-    const rows = form.getElementsByTagName('tr');
-    for (let i = 1; i < days.length + 1; i++) {
-        const day = days[i - 1]
+    const cells = tbody_tr.getElementsByTagName('td');
+    for (let i = 0; i < cells.length - 1; i++) {
+        const day = days[i];
         const times = [];
 
-        for (let j = 1; j < rows.length; j++) {
-            const cells = rows[j].getElementsByTagName('td');
+        cells[i].querySelectorAll('input[name="timeStart"]').forEach((timeStartInput, index) => {
+            const timeEndInput = cells[i].querySelectorAll('input[name="timeEnd"]')[index];
 
-            cells[i].querySelectorAll('input[name="timeStart"]').forEach((timeStartInput, index) => {
-                const timeEndInput = cells[i].querySelectorAll('input[name="timeEnd"]')[index];
-
-                if (timeStartInput && timeEndInput) {
-                    const timeStart = timeStartInput.value;
-                    const timeEnd = timeEndInput.value;
-                    times.push({ start: timeStart, end: timeEnd });
-                }
-            });
-        }
-
+            if (timeStartInput && timeEndInput) {
+                const timeStart = timeStartInput.value;
+                const timeEnd = timeEndInput.value;
+                times.push({ start: timeStart, end: timeEnd });
+            }
+        });
         timeSlots.push({ day: day, times: times} );
     }
     
