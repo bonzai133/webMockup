@@ -246,7 +246,7 @@ function submitTimeSlots() {
     const timeSlots = [];
 
     const cells = tbody_tr.getElementsByTagName('td');
-    for (let i = 0; i < cells.length - 1; i++) {
+    for (let i = 0; i < cells.length; i++) {
         const day = days[i];
         const times = [];
 

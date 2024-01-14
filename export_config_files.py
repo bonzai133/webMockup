@@ -7,13 +7,8 @@ import requests
 
 def main(hostname, output):
     files = [
-        ("home.html", "home.html"),
-        ("config.html", "config.html"),
-        ("configAdvanced.html", "configAdvanced.html"),
-        ("configTimeSlots.html", "configTimeSlots.html"),
-        ("about.html", "about.html"),
-        ("static/index.js", "static/index.js"),
-        ("static/site.css", "static/site.css"),
+        ("config/thermostato.cfg", "thermostato.cfg"),
+        ("config/timeslots.cfg", "timeslots.cfg"),
     ]
 
     for (url, file_path) in files:
@@ -25,7 +20,7 @@ def main(hostname, output):
 
 
 if __name__ == "__main__":
-    hostname = "http://localhost:5000"
-    output = "../Thermostato/Thermostato/data/"
+    hostname = "http://192.168.0.12"
+    output = "../Thermostato/Thermostato/data/config"
 
     main(hostname, output)
