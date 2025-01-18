@@ -71,7 +71,9 @@ def api_advancedConfig():
         print(data)  # you can remove this line, it's just for debugging
         return jsonify({'message': 'Advanced Config received'})
     else:
-        return jsonify({'date': '2023-05-08', 'time': '17:17', 'ipAddress': '192.168.0.69', 'ntpServer': 'fr.poopool.org', 'lcdContrast': '128', 'tempOffset': '-1.5'})
+        return jsonify({'date': '2023-05-08', 'time': '17:17', 'ipAddress': '192.168.0.69',
+                        'ntpServer': 'fr.poopool.org', 'lcdContrast': '128', 'tempOffset': '-1.5',
+                        'heatTime': 900, 'restTime': 300})
 
 
 @app.route("/api/timeSlots", methods=['GET', 'POST'])

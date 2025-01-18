@@ -1,8 +1,6 @@
 import requests
 
-# Export the html / css / js files from running server
-# 1. Run Flask app on http://localhost:5000
-# 2. Execute this script
+# Export the configuration files from running Thermostato for backup
 
 
 def main(hostname, output):
@@ -20,7 +18,7 @@ def main(hostname, output):
 
 
 if __name__ == "__main__":
-    hostname = "http://192.168.0.12"
+    hostname = "http://192.168.0.103"
     output = "../Thermostato/Thermostato/data/config"
 
     main(hostname, output)
